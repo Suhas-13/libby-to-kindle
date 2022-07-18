@@ -10,7 +10,7 @@ MOBI_FOLDER = '/mobi'
 
 PROCESS_LIST = Queue(connection=Redis())
 
-outlook.user_name = os.environ.get('hotmail')
+outlook.username = os.environ.get('hotmail')
 outlook.password = os.environ.get('hotmail_password')
 target_email = os.environ.get('kindle_email')
 
