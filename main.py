@@ -2,7 +2,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from helper import *
-
+import flask
 
 
 
@@ -40,22 +40,23 @@ def upload_file():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            if acsm_file(file.filename):
-                file.save(os.path.join(app.config['ACSM_FOLDER'], filename))
-                PROCESS_LIST.enqueue(remove_drm, filename)
-            elif epub_file(file.filename):
-                file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
-                PROCESS_LIST.enqueue(convert_epub_to_mobi, filename)
-            elif mobi_file(file.filename):
-                file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
-                PROCESS_LIST.enqueue(email_kindle, filename)
-            return redirect(request.url)
+        uploaded_files = flask.request.files.getlist("file[]")
+        for file in uploaded_files:
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                if acsm_file(file.filename):
+                    file.save(os.path.join(app.config['ACSM_FOLDER'], filename))
+                    PROCESS_LIST.enqueue(remove_drm, filename)
+                elif epub_file(file.filename):
+                    file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
+                    PROCESS_LIST.enqueue(convert_epub_to_mobi, filename)
+                elif mobi_file(file.filename):
+                    file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
+                    PROCESS_LIST.enqueue(email_kindle, filename)
+        return redirect(request.url)
     return '''
     <!doctype html>
     <title>Upload Books</title>
