@@ -17,7 +17,7 @@ target_email = os.environ.get('kindle_email')
 
 def remove_drm(filename):
     subprocess.run(["./knock", os.path.join(ACSM_FOLDER, filename)])
-    os.rename(os.path.join(ACSM_FOLDER, filename), os.path.join(
+    os.rename(os.path.join(ACSM_FOLDER, filename.split(".")[0] + ".epub"), os.path.join(
         EPUB_FOLDER, filename.split(".")[0] + ".epub"))
     PROCESS_LIST.enqueue(convert_epub_to_mobi, filename.split(".")[0] + ".epub")
 
