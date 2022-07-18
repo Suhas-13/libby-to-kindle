@@ -26,7 +26,7 @@ def remove_drm(filename):
     PROCESS_LIST.enqueue(convert_epub_to_mobi, filename.split(".")[0] + ext)
 
 def convert_epub_to_mobi(filename):
-    subprocess.run(["ebook-convert", os.path.join(EPUB_FOLDER, filename), os.path.join(MOBI_FOLDER, filename)])
+    subprocess.run(["ebook-convert", os.path.join(EPUB_FOLDER, filename), os.path.join(MOBI_FOLDER, filename.split(".")[0] + ".mobi")])
     PROCESS_LIST.enqueue(email_kindle, filename.split(".")[0] + ".mobi")
 
 def email_kindle(filename):
