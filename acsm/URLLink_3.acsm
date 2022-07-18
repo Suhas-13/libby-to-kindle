@@ -1,0 +1,28 @@
+<fulfillmentToken fulfillmentType="free" auth="user" xmlns="http://ns.adobe.com/adept">
+  <distributor>urn:uuid:b4e1303f-630f-4769-9c82-4dea6d65a277</distributor>
+  <operatorURL>https://contentserver.adobe.com/fulfillment</operatorURL>
+  <transaction>8a8d2121-e410-4860-a4ee-01d462a97be6-000020c3</transaction>
+  <expiration>2022-07-18T09:13:51+00:00</expiration>
+  <resourceItemInfo>
+    <resource>urn:uuid:818e9fcb-dfbe-4972-b41c-c5fcbf73735c</resource>
+    <resourceItem>1</resourceItem>
+    <metadata>
+      <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">Die Leiden des jungen Werther</dc:title>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Goethe, Johann Wolfgang von</dc:creator>
+      <dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/">FeedBooks (www.feedbooks.com)</dc:publisher>
+      <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">urn:uuid:09d40e9c-0fc0-11dd-b730-0018f369440e</dc:identifier>
+      <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">application/epub+zip</dc:format>
+      <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">de</dc:language>
+    </metadata>
+    <licenseToken>
+      <resource>urn:uuid:818e9fcb-dfbe-4972-b41c-c5fcbf73735c</resource>
+      <permissions>
+        <display/>
+        <excerpt/>
+        <print/>
+        <play/>
+      </permissions>
+    </licenseToken>
+  </resourceItemInfo>
+  <hmac>/1hecr7MvzhzBWqs+dnAcD+QBes=</hmac>
+</fulfillmentToken>

@@ -40,7 +40,8 @@ def upload_file():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        uploaded_files = flask.request.files.getlist("file[]")
+        uploaded_files = flask.request.files.getlist("file")
+        print(uploaded_files)
         for file in uploaded_files:
             if file.filename == '':
                 flash('No selected file')
@@ -66,7 +67,6 @@ def upload_file():
       <input type=submit value=Upload>
     </form>
     '''
-'''
+
 if __name__ == "__main__":
     app.run(host = '0.0.0.0')
-'''
