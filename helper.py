@@ -16,10 +16,15 @@ target_email = os.environ.get('kindle_email')
 
 
 def remove_drm(filename):
+    if os.path.exists(os.path.join(ACSM_FOLDER, filename.split(".")[0] + ".epub")):
+        ext = ".epub"
+    else:
+        ext = ".pdf"
+
     subprocess.run(["./knock", os.path.join(ACSM_FOLDER, filename)])
-    os.rename(os.path.join(ACSM_FOLDER, filename.split(".")[0] + ".epub"), os.path.join(
-        EPUB_FOLDER, filename.split(".")[0] + ".epub"))
-    PROCESS_LIST.enqueue(convert_epub_to_mobi, filename.split(".")[0] + ".epub")
+    os.rename(os.path.join(ACSM_FOLDER, filename.split(".")[0] + ext), os.path.join(
+        EPUB_FOLDER, filename.split(".")[0] + ext))
+    PROCESS_LIST.enqueue(convert_epub_to_mobi, filename.split(".")[0] + ext)
 
 def convert_epub_to_mobi(filename):
     subprocess.run(["ebook-convert", os.path.join(EPUB_FOLDER, filename), os.path.join(MOBI_FOLDER, filename)])
