@@ -2,6 +2,8 @@ import email
 import subprocess
 from redis import Redis
 from rq import Queue
+from pathlib import Path
+
 from redmail import outlook
 import os
 ACSM_FOLDER = './acsm'
@@ -34,5 +36,5 @@ def email_kindle(filename):
         receivers=[target_email],
         subject="Convert file",
         text=" ",
-        attachments={filename: os.path.join(MOBI_FOLDER, filename)}
+        attachments={filename: Path(os.path.join(MOBI_FOLDER, filename))}
     )
