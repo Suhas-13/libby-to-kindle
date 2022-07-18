@@ -4,9 +4,9 @@ from redis import Redis
 from rq import Queue
 from redmail import outlook
 import os
-ACSM_FOLDER = '/acsm'
-EPUB_FOLDER = '/epub'
-MOBI_FOLDER = '/mobi'
+ACSM_FOLDER = './acsm'
+EPUB_FOLDER = './epub'
+MOBI_FOLDER = './mobi'
 
 PROCESS_LIST = Queue(connection=Redis())
 
