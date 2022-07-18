@@ -12,6 +12,8 @@ ALLOWED_EXTENSIONS = {'epub', 'acsm'}
 
 app = Flask(__name__)
 app.config['ACSM_FOLDER'] = ACSM_FOLDER
+app.config['MOBI_FOLDER'] = MOBI_FOLDER
+app.config['EPUB_FOLDER'] = EPUB_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 48 * 1000 * 1000
 
 
