@@ -51,12 +51,10 @@ def upload_file():
                 if acsm_file(file.filename):
                     file.save(os.path.join(app.config['ACSM_FOLDER'], filename))
                     PROCESS_LIST.enqueue(remove_drm, filename)
-                elif epub_file(file.filename):
-                    file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
-                    PROCESS_LIST.enqueue(convert_epub_to_mobi, filename)
-                elif mobi_file(file.filename):
+                elif epub_file(file.filename) or mobi_file(file.filename):
                     file.save(os.path.join(app.config['EPUB_FOLDER'], filename))
                     PROCESS_LIST.enqueue(email_kindle, filename)
+
         return redirect(request.url)
     return '''
     <!doctype html>
@@ -68,5 +66,4 @@ def upload_file():
     </form>
     '''
 
-if __name__ == "__main__":
-    app.run(host = '0.0.0.0')
+

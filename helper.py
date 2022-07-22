@@ -36,5 +36,5 @@ def email_kindle(filename):
         receivers=[target_email],
         subject="Convert file",
         text=" ",
-        attachments={filename: Path(os.path.join(MOBI_FOLDER, filename))}
+        attachments={filename: Path(os.path.join(EPUB_FOLDER, filename))}
     )
